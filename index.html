@@ -65,13 +65,16 @@
         .ad-banner {
             margin: 20px 0;
             padding: 15px;
-            background-color: #e7f7e7; /* Einfarbiger Hintergrund für das Banner */
-            border: 1px solid #4CAF50;
+            background-color: red; /* Roter Hintergrund für das Banner */
             border-radius: 5px;
             text-align: center;
             font-weight: bold;
-            color: #4CAF50; /* Textfarbe anpassen */
-            font-size: 1.2em; /* Schriftgröße erhöhen */
+            color: white; /* Weiße Textfarbe */
+            font-size: 1.2em; /* Größere Schrift */
+            height: 150px; /* Höhe des Banners festlegen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .ad-popup {
@@ -132,6 +135,7 @@
 
             .ad-banner {
                 font-size: 1em; /* Schriftgröße für mobile Geräte */
+                height: 100px; /* Höhe des Banners für mobile Geräte */
             }
         }
     </style>
@@ -146,18 +150,24 @@
         <h2>How It Works</h2>
         <p>Welcome to our platform! Here, you can watch advertisements and easily support charitable causes.</p>
         <p>For every ad you watch, a donation will be made to a charitable organization. It's simple: you watch ads, and we donate on your behalf!</p>
+        <p>Your contribution is effortless, and the more you engage, the more impact we can make together. By participating, you are directly helping those in need, and it's all free for you!</p>
 
         <h2>What You Need to Do</h2>
         <p>To get started, click the button below and begin watching ads!</p>
         <a href="#" class="button" id="watchAdsButton">Watch Ads Now</a>
+        <p>Once you start watching ads, you will see an impact counter on your screen, showing how much has been donated thanks to your support.</p>
 
         <h2>Support Charitable Causes</h2>
         <p>By viewing ads, you can make a difference. Join us in supporting those in need!</p>
+        <p>With every video you watch, a portion of the advertising revenue goes directly to charitable organizations across the globe. Whether it’s supporting clean water projects, education for children, or emergency relief, you are part of the change.</p>
 
         <div class="ad-banner">
-            <p>Every ad you watch helps us donate to charity. Thank you for your support!</p>
-            <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
+            <p>Ad Banner for Charity</p>
         </div>
+
+        <h2>Why Your Support Matters</h2>
+        <p>Your engagement on our platform turns ad revenue into meaningful donations. We believe in a world where every small action can lead to a larger good, and with your help, we are one step closer to that goal. The organizations we support are carefully selected to ensure that funds go to those who need them most.</p>
+        <p>From disaster relief to community-building projects, your participation is crucial. By simply watching ads, you are not only helping raise funds but also spreading awareness for the causes that matter.</p>
     </div>
 
     <footer>
@@ -203,5 +213,6 @@
 </body>
 
 </html>
+
 
 
