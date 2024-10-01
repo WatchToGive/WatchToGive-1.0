@@ -20,11 +20,17 @@
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         h1 {
             margin: 0;
             font-size: 2.5em;
+        }
+
+        .counter {
+            font-size: 1.5em;
+            margin-top: 10px;
         }
 
         .container {
@@ -34,6 +40,7 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         h2 {
@@ -56,6 +63,7 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
             font-size: 1.1em;
+            margin-top: 20px;
         }
 
         .button:hover {
@@ -65,46 +73,28 @@
         .ad-banner {
             margin: 20px 0;
             padding: 15px;
-            background-color: #e7f7e7;
-            border: 1px solid #4CAF50;
+            background-color: red;
             border-radius: 5px;
             text-align: center;
             font-weight: bold;
+            color: white;
+            border: 2px solid #4CAF50;
         }
 
-        /* Linke und rechte Werbebanner */
-        .side-ad {
-            display: none; /* Unsichtbar, bis die Bildschirmgröße groß genug ist */
-            position: fixed;
-            top: 100px;
-            width: 160px; /* Feste Breite für die Banner */
-            height: 600px; /* Feste Höhe für die Banner */
+        .horizontal-ad {
+            margin: 20px 0;
+            padding: 15px;
             background-color: red;
+            border-radius: 5px;
             text-align: center;
             font-weight: bold;
             color: white;
-            line-height: 600px;
-        }
-
-        /* Linkes Banner */
-        .side-ad.left {
-            left: 0;
-        }
-
-        /* Rechtes Banner */
-        .side-ad.right {
-            right: 0;
-        }
-
-        /* Sichtbar nur auf Bildschirmen größer als 1024px */
-        @media (min-width: 1024px) {
-            .side-ad {
-                display: block;
-            }
+            border: 2px solid #4CAF50;
+            max-width: 100%;
         }
 
         .ad-popup {
-            display: none; /* Standardmäßig nicht sichtbar */
+            display: none;
             position: fixed;
             top: 50%;
             left: 50%;
@@ -113,18 +103,18 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000; /* Z-Index erhöht, damit es über anderen Elementen liegt */
+            z-index: 1000;
         }
 
         .overlay {
-            display: none; /* Standardmäßig nicht sichtbar */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Transparenter Hintergrund */
-            z-index: 999; /* Z-Index für den Overlay-Hintergrund */
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
         }
 
         .close-button {
@@ -143,6 +133,34 @@
             position: relative;
             bottom: 0;
             width: 100%;
+        }
+
+        .side-ad {
+            display: none;
+            position: fixed;
+            top: 100px;
+            width: 160px;
+            height: 600px;
+            background-color: red;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            line-height: 600px;
+            border: 2px solid #4CAF50;
+        }
+
+        .side-ad.left {
+            left: 0;
+        }
+
+        .side-ad.right {
+            right: 0;
+        }
+
+        @media (min-width: 1024px) {
+            .side-ad {
+                display: block;
+            }
         }
 
         @media (max-width: 600px) {
@@ -165,32 +183,38 @@
 <body>
     <header>
         <h1>Welcome to Watch To Give!</h1>
+        <div class="counter">
+            Ads watched by all users: <span id="adCount">0</span>
+        </div>
     </header>
 
-    <!-- Linkes Werbebanner -->
     <div class="side-ad left">
         Ad 160x600
     </div>
 
-    <!-- Rechtes Werbebanner -->
     <div class="side-ad right">
         Ad 160x600
     </div>
 
     <div class="container">
         <h2>How It Works</h2>
-        <p>Welcome to our platform! Here, you can watch advertisements and easily support charitable causes.</p>
-        <p>For every ad you watch, a donation will be made to a charitable organization. It's simple: you watch ads, and we donate on your behalf!</p>
+        <p>It's simple: you watch ads, and we donate on your behalf!</p>
+        <p>Your contribution is effortless, and the more you engage, the more impact we can make together. By participating, you are directly helping those in need, and it's all free for you!</p>
 
-        <h2>What You Need to Do</h2>
-        <p>To get started, click the button below and begin watching ads!</p>
         <a href="#" class="button" id="watchAdsButton">Watch Ads Now</a>
 
-        <h2>Support Charitable Causes</h2>
-        <p>By viewing ads, you can make a difference. Join us in supporting those in need!</p>
+        <div class="horizontal-ad">
+            <p>Ad Banner 728x90</p>
+            <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
+        </div>
 
         <div class="ad-banner">
             <p>Every ad you watch helps us donate to charity. Thank you for your support!</p>
+            <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
+        </div>
+
+        <div class="horizontal-ad">
+            <p>Another horizontal ad banner for charity 728x90</p>
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
         </div>
     </div>
@@ -199,15 +223,12 @@
         <p>&copy; 2024 Charity Project. All rights reserved.</p>
     </footer>
 
-    <!-- Overlay für die Werbung -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Werbeanzeige Popup -->
     <div class="ad-popup" id="adPopup">
         <span class="close-button" id="closeButton">X</span>
         <h2>Advertisement</h2>
         <p>This is where your advertisement will go!</p>
-        <!-- Hier kannst du den Werbecode von AdSense oder einer anderen Plattform einfügen -->
         <img src="https://via.placeholder.com/300x250?text=Ad+Placeholder" alt="Ad Placeholder" style="width: 100%;">
         <p>Thank you for watching!</p>
     </div>
@@ -218,27 +239,35 @@
         const adPopup = document.getElementById('adPopup');
         const overlay = document.getElementById('overlay');
         const closeButton = document.getElementById('closeButton');
+        const adCount = document.getElementById('adCount');
+
+        let count = 0;
+
+        // Simuliert einen Anstieg der angesehenen Werbespots
+        function increaseAdCount() {
+            count++;
+            adCount.textContent = count.toLocaleString(); // Formatierung der Zahl
+        }
+
+        // Füge jede Sekunde 1 zur Zahl hinzu (kann nach Bedarf angepasst werden)
+        setInterval(increaseAdCount, 1000);
 
         watchAdsButton.addEventListener('click', function (event) {
-            event.preventDefault(); // Verhindert das Standardverhalten des Links
-            overlay.style.display = 'block'; // Zeigt den Overlay an
-            adPopup.style.display = 'block'; // Zeigt die Werbung an
+            event.preventDefault();
+            overlay.style.display = 'block';
+            adPopup.style.display = 'block';
         });
 
         closeButton.addEventListener('click', function () {
-            overlay.style.display = 'none'; // Versteckt den Overlay
-            adPopup.style.display = 'none'; // Versteckt die Werbung
+            overlay.style.display = 'none';
+            adPopup.style.display = 'none';
         });
 
         overlay.addEventListener('click', function () {
-            overlay.style.display = 'none'; // Versteckt den Overlay, wenn der Benutzer darauf klickt
-            adPopup.style.display = 'none'; // Versteckt die Werbung
+            overlay.style.display = 'none';
+            adPopup.style.display = 'none';
         });
     </script>
 </body>
 
 </html>
-
-
-
-
