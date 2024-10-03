@@ -279,4 +279,31 @@
         let count = 0;
         const goal = 100000;
 
+        // Simuliert einen Anstieg der angesehenen Werbespots
+        function increaseAdCount() {
+            count++;
+            adCount.textContent = count.toLocaleString(); // Formatierung der Zahl
+        }
 
+        // Füge jede Sekunde 1 zur Zahl hinzu (kann nach Bedarf angepasst werden)
+        setInterval(increaseAdCount, 1000);
+
+        watchAdsButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            overlay.style.display = 'block';
+            adPopup.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', function () {
+            overlay.style.display = 'none';
+            adPopup.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', function () {
+            overlay.style.display = 'none';
+            adPopup.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
