@@ -23,6 +23,37 @@
             position: relative;
         }
 
+        header nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            background-color: #45a049;
+        }
+
         h1 {
             margin: 0;
             font-size: 2.5em;
@@ -129,7 +160,7 @@
         .side-ad {
             display: none;
             position: fixed;
-            top: 150px; /* Höhe, damit es nicht in den Header überschneidet */
+            top: 150px;
             width: 160px;
             height: 600px;
             background-color: red;
@@ -142,11 +173,11 @@
         }
 
         .side-ad.left {
-            left: calc((100vw - 800px) / 4 - 160px); /* Platzierung links */
+            left: calc((100vw - 800px) / 4 - 160px);
         }
 
         .side-ad.right {
-            right: calc((100vw - 800px) / 4 - 160px); /* Platzierung rechts */
+            right: calc((100vw - 800px) / 4 - 160px);
         }
 
         @media (min-width: 1024px) {
@@ -176,8 +207,17 @@
     <header>
         <h1>Welcome to Watch To Give!</h1>
         <div class="counter">
-            Ads watched by all users: <span id="adCount">0</span>
+            Ads watched this month: <span id="adCount">0</span>
         </div>
+        <!-- Navigationsmenü -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Vertikale Banner an den Seiten -->
@@ -237,32 +277,6 @@
         const adCount = document.getElementById('adCount');
 
         let count = 0;
+        const goal = 100000;
 
-        // Simuliert einen Anstieg der angesehenen Werbespots
-        function increaseAdCount() {
-            count++;
-            adCount.textContent = count.toLocaleString(); // Formatierung der Zahl
-        }
 
-        // Füge jede Sekunde 1 zur Zahl hinzu (kann nach Bedarf angepasst werden)
-        setInterval(increaseAdCount, 1000);
-
-        watchAdsButton.addEventListener('click', function (event) {
-            event.preventDefault();
-            overlay.style.display = 'block';
-            adPopup.style.display = 'block';
-        });
-
-        closeButton.addEventListener('click', function () {
-            overlay.style.display = 'none';
-            adPopup.style.display = 'none';
-        });
-
-        overlay.addEventListener('click', function () {
-            overlay.style.display = 'none';
-            adPopup.style.display = 'none';
-        });
-    </script>
-</body>
-
-</html>
