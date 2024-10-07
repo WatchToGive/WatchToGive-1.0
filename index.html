@@ -50,8 +50,15 @@
             transition: background-color 0.3s ease;
         }
 
+        /* Hover-Effekt, um die Buttons dunkler zu machen */
         header nav ul li a:hover {
-            background-color: #45a049;
+            background-color: #388e3c; /* dunkleres Grün */
+        }
+
+        /* Aktive Seite hervorheben */
+        header nav ul li a.active {
+            background-color: #2e7d32;
+            font-weight: bold;
         }
 
         h1 {
@@ -99,7 +106,7 @@
         }
 
         .button:hover {
-            background-color: #45a049;
+            background-color: #388e3c; /* Dunkleres Grün für den Hover-Effekt */
         }
 
         .horizontal-ad {
@@ -212,10 +219,10 @@
         <!-- Navigationsmenü -->
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="faqs.html">FAQs</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="faqs.html" class="nav-link">FAQs</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -278,11 +285,26 @@
 
         let count = 0;
 
+        // Funktion zur Speicherung des Count im localStorage
+        function saveAdCount() {
+            localStorage.setItem('adCount', count);
+        }
+
+        // Funktion zum Abrufen des Count aus dem localStorage
+        function loadAdCount() {
+            const savedCount = localStorage.getItem('adCount');
+            if (savedCount !== null) {
+                count = parseInt(savedCount);
+                adCount.textContent = count.toLocaleString();
+            }
+        }
+
         // Simuliert einen Anstieg der angesehenen Werbespots um eine zufällige Zahl zwischen 1 und 5
         function increaseAdCount() {
             const randomIncrement = Math.floor(Math.random() * 5) + 1; // Zufällige Zahl zwischen 1 und 5
             count += randomIncrement;
             adCount.textContent = count.toLocaleString(); // Formatierung der Zahl
+            saveAdCount(); // Speichere den Count
         }
 
         // Füge jede Sekunde eine zufällige Zahl zwischen 1 und 5 zur Zahl hinzu
@@ -302,6 +324,19 @@
         overlay.addEventListener('click', function () {
             overlay.style.display = 'none';
             adPopup.style.display = 'none';
+        });
+
+        // Lade die gespeicherte Anzahl der angesehenen Ads beim Laden der Seite
+        loadAdCount();
+
+        // Aktivieren des richtigen Menüpunkts basierend auf der aktuellen Seite
+        const links = document.querySelectorAll('.nav-link');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
         });
     </script>
 </body>
