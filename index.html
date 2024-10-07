@@ -21,9 +21,9 @@
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
+            z-index: 2;
         }
 
-        /* Flexbox zur korrekten Darstellung des Menüs bei verschiedenen Bildschirmgrößen */
         header .header-content {
             display: flex;
             flex-direction: column;
@@ -31,11 +31,11 @@
             gap: 10px;
         }
 
-        header nav {
+        nav {
             margin-top: 10px;
         }
 
-        header nav ul {
+        nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -43,26 +43,19 @@
             gap: 20px;
         }
 
-        header nav ul li {
-            display: inline;
-        }
-
-        header nav ul li a {
+        nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 1em;
             padding: 8px 12px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
-        /* Hover-Effekt, um die Buttons dunkler zu machen */
-        header nav ul li a:hover {
-            background-color: #388e3c; /* dunkleres Grün */
+        nav ul li a:hover {
+            background-color: #388e3c;
         }
 
-        /* Aktive Seite hervorheben */
-        header nav ul li a.active {
+        nav ul li a.active {
             background-color: #2e7d32;
             font-weight: bold;
         }
@@ -112,7 +105,7 @@
         }
 
         .button:hover {
-            background-color: #388e3c; /* Dunkleres Grün für den Hover-Effekt */
+            background-color: #388e3c;
         }
 
         .horizontal-ad {
@@ -123,8 +116,31 @@
             text-align: center;
             font-weight: bold;
             color: white;
-            border: 2px solid #4CAF50;
+            border: 4px solid #4CAF50; /* Dickere grüne Umrahmung */
             max-width: 100%;
+        }
+
+        .side-ad {
+            display: none;
+            position: fixed;
+            top: 100px;
+            width: 160px;
+            height: 600px;
+            background-color: red;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            line-height: 600px;
+            border: 4px solid #4CAF50; /* Dickere grüne Umrahmung */
+            z-index: 1;
+        }
+
+        .side-ad.left {
+            left: 0;
+        }
+
+        .side-ad.right {
+            right: 0;
         }
 
         .ad-popup {
@@ -169,30 +185,6 @@
             width: 100%;
         }
 
-        /* Anpassung der vertikalen Banner */
-        .side-ad {
-            display: none;
-            position: fixed;
-            top: 100px; /* Verschoben, um nicht mit dem Header zu kollidieren */
-            width: 160px;
-            height: 600px;
-            background-color: red;
-            text-align: center;
-            font-weight: bold;
-            color: white;
-            line-height: 600px;
-            border: 2px solid #4CAF50;
-            z-index: 1;
-        }
-
-        .side-ad.left {
-            left: calc((100vw - 800px) / 4 - 160px);
-        }
-
-        .side-ad.right {
-            right: calc((100vw - 800px) / 4 - 160px);
-        }
-
         @media (min-width: 1024px) {
             .side-ad {
                 display: block;
@@ -213,8 +205,7 @@
                 font-size: 1em;
             }
 
-            /* Verhindert, dass sich das Menü über die Überschrift legt */
-            header nav ul {
+            nav ul {
                 flex-direction: column;
                 gap: 10px;
             }
@@ -225,11 +216,10 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>Welcome to Watch To GIve!</h1>
+            <h1>Welcome to Watch To Give!</h1>
             <div class="counter">
                 Ads watched this month: <span id="adCount">0</span>
             </div>
-            <!-- Navigationsmenü -->
             <nav>
                 <ul>
                     <li><a href="index.html" class="nav-link">Home</a></li>
@@ -241,14 +231,8 @@
         </div>
     </header>
 
-    <!-- Vertikale Banner an den Seiten -->
-    <div class="side-ad left">
-        Ad 160x600
-    </div>
-
-    <div class="side-ad right">
-        Ad 160x600
-    </div>
+    <div class="side-ad left">Ad 160x600</div>
+    <div class="side-ad right">Ad 160x600</div>
 
     <div class="container">
         <h2>How It Works</h2>
@@ -257,7 +241,6 @@
 
         <a href="#" class="button" id="watchAdsButton">Watch Ads Now</a>
 
-        <!-- Horizontaler Werbebanner im Text -->
         <div class="horizontal-ad">
             <p>Ad Banner 728x90</p>
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
@@ -268,7 +251,6 @@
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
         </div>
 
-        <!-- Ein weiterer horizontaler Werbebanner -->
         <div class="horizontal-ad">
             <p>Another horizontal ad banner for charity 728x90</p>
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
@@ -290,7 +272,6 @@
     </div>
 
     <script>
-        // JavaScript für das Anzeigen der Werbung
         const watchAdsButton = document.getElementById('watchAdsButton');
         const adPopup = document.getElementById('adPopup');
         const overlay = document.getElementById('overlay');
@@ -299,29 +280,24 @@
 
         let count = 0;
 
-        // Funktion zur Speicherung des Count im localStorage
         function saveAdCount() {
             localStorage.setItem('adCount', count);
         }
 
-        // Funktion zum Abrufen des Count aus dem localStorage
         function loadAdCount() {
             const savedCount = localStorage.getItem('adCount');
-            if (savedCount !== null) {
+            if (savedCount) {
                 count = parseInt(savedCount);
                 adCount.textContent = count.toLocaleString();
             }
         }
 
-        // Simuliert einen Anstieg der angesehenen Werbespots um eine zufällige Zahl zwischen 1 und 5
         function increaseAdCount() {
-            const randomIncrement = Math.floor(Math.random() * 5) + 1; // Zufällige Zahl zwischen 1 und 5
-            count += randomIncrement;
-            adCount.textContent = count.toLocaleString(); // Formatierung der Zahl
-            saveAdCount(); // Speichere den Count
+            count += Math.floor(Math.random() * 5) + 1; // Zufällige Zahl zwischen 1 und 5
+            adCount.textContent = count.toLocaleString();
+            saveAdCount();
         }
 
-        // Füge jede Sekunde eine zufällige Zahl zwischen 1 und 5 zur Zahl hinzu
         setInterval(increaseAdCount, 1000);
 
         watchAdsButton.addEventListener('click', function (event) {
@@ -340,10 +316,8 @@
             adPopup.style.display = 'none';
         });
 
-        // Lade die gespeicherte Anzahl der angesehenen Ads beim Laden der Seite
         loadAdCount();
 
-        // Aktivieren des richtigen Menüpunkts basierend auf der aktuellen Seite
         const links = document.querySelectorAll('.nav-link');
         const currentPage = window.location.pathname.split('/').pop() || "index.html";
 
