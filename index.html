@@ -124,17 +124,19 @@
             max-width: 100%;
         }
 
+        /* Styling für die vertikalen Werbebanner */
         .side-ad {
             position: absolute; /* Absolute Positionierung für vertikale Banner */
-            width: 160px;
-            height: 600px;
-            background-color: red;
-            text-align: center;
-            font-weight: bold;
-            color: white;
-            line-height: 600px;
+            width: 160px; /* Breite der Banner */
+            height: 600px; /* Höhe der Banner */
+            background-color: red; /* Hintergrundfarbe der Banner */
+            text-align: center; /* Text zentrieren */
+            font-weight: bold; /* Fettdruck für den Text */
+            color: white; /* Schriftfarbe */
+            line-height: 600px; /* Vertikale Zentrierung des Textes */
             border: 4px solid #4CAF50; /* Dickere grüne Umrahmung */
             z-index: 1;
+            /* Platzierung der Banner mit minimalen Abständen von den Seiten */
         }
 
         .side-ad.left {
@@ -143,6 +145,12 @@
 
         .side-ad.right {
             right: 10px; /* Rechtes Banner */
+        }
+
+        /* Sicherstellen, dass die Banner immer neben dem Container bleiben */
+        .container {
+            margin-left: 200px; /* Platz für das linke Banner */
+            margin-right: 200px; /* Platz für das rechte Banner */
         }
 
         .ad-popup {
