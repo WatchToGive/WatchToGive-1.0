@@ -30,11 +30,11 @@
             gap: 10px;
         }
 
-        header nav {
+        nav {
             margin-top: 10px;
         }
 
-        header nav ul {
+        nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -42,7 +42,7 @@
             gap: 20px;
         }
 
-        header nav ul li a {
+        nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 1em;
@@ -51,11 +51,11 @@
             transition: background-color 0.3s ease;
         }
 
-        header nav ul li a:hover {
+        nav ul li a:hover {
             background-color: #388e3c;
         }
 
-        header nav ul li a.active {
+        nav ul li a.active {
             background-color: #2e7d32;
             font-weight: bold;
         }
@@ -97,6 +97,30 @@
             margin-top: 20px;
             border-top: 1px solid #e1e1e1;
         }
+
+        .horizontal-ad, .vertical-ad {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: red;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            border: 4px solid #4CAF50; /* Dickere grüne Umrahmung */
+            max-width: 100%;
+        }
+
+        .vertical-ad {
+            display: inline-block;
+            width: 160px; /* Standardbreite für vertikale Banner */
+            height: 600px; /* Standardhöhe für vertikale Banner */
+            margin: 0 10px; /* Abstand zwischen den vertikalen Bannern */
+        }
+
+        .banner-container {
+            display: flex;
+            justify-content: center; /* Zentriert die vertikalen Banner */
+        }
     </style>
 </head>
 
@@ -123,6 +147,30 @@
         <p>Watch To Give is a charity platform where people can contribute to charitable causes simply by watching advertisements. 
            Every ad you watch generates donations that go directly to those in need, without costing you a thing!</p>
         <p>We are committed to making the world a better place by empowering everyone to make a difference, one ad at a time.</p>
+    </div>
+
+    <!-- Horizontal Ads -->
+    <div class="horizontal-ad">
+        <p>Ad Banner 728x90</p>
+        <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
+    </div>
+
+    <div class="horizontal-ad">
+        <p>Another horizontal ad banner for charity 728x90</p>
+        <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
+    </div>
+
+    <!-- Vertical Ads -->
+    <div class="banner-container">
+        <div class="vertical-ad">
+            <p>Vertical Ad 1</p>
+            <img src="https://via.placeholder.com/160x600?text=Vertical+Ad+1" alt="Vertical Ad 1" style="width: 100%; height: auto;">
+        </div>
+
+        <div class="vertical-ad">
+            <p>Vertical Ad 2</p>
+            <img src="https://via.placeholder.com/160x600?text=Vertical+Ad+2" alt="Vertical Ad 2" style="width: 100%; height: auto;">
+        </div>
     </div>
 
     <footer>
