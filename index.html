@@ -80,10 +80,6 @@
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             text-align: center;
-            position: relative;
-            display: flex; /* Flexbox aktivieren für Banner-Positionierung */
-            justify-content: space-between; /* Platz zwischen Banner und Inhalt */
-            align-items: center; /* Vertikale Zentrierung */
         }
 
         h2 {
@@ -213,13 +209,22 @@
                 gap: 10px;
             }
         }
+
+        /* Container für die vertikalen Banner */
+        .banner-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0; /* Abstand zu anderen Elementen */
+        }
     </style>
 </head>
 
 <body>
     <header>
         <div class="header-content">
-            <h1>Welcome to Watch To Give!!</h1>
+            <h1>Welcome to Watch To Give!</h1>
             <div class="counter">
                 Ads watched this month: <span id="adCount">0</span>
             </div>
@@ -234,8 +239,12 @@
         </div>
     </header>
 
-    <div class="container">
+    <div class="banner-container">
         <div class="side-ad left">Ad 160x600</div>
+        <div class="side-ad right">Ad 160x600</div>
+    </div>
+
+    <div class="container">
         <div class="content"> <!-- Container für den Text -->
             <h2>How It Works</h2>
             <p>It's simple: you watch ads, and we donate on your behalf!</p>
@@ -258,15 +267,13 @@
                 <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
             </div>
         </div>
-        <div class="side-ad right">Ad 160x600</div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Charity Project. All rights reserved.</p>
+        <p>&copy; 2024 Watch To Give. All rights reserved.</p>
     </footer>
 
     <div class="overlay" id="overlay"></div>
-
     <div class="ad-popup" id="adPopup">
         <span class="close-button" id="closeButton">X</span>
         <h2>Advertisement</h2>
