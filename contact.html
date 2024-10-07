@@ -45,6 +45,10 @@
             transition: background-color 0.3s ease;
         }
 
+        header nav ul li a.active {
+            background-color: #333; /* Farbe für aktiven Menüpunkt */
+        }
+
         header nav ul li a:hover {
             background-color: #45a049;
         }
@@ -119,10 +123,10 @@
         <h1>Contact Us</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="faqs.html">FAQs</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="faqs.html" class="nav-link">FAQs</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -142,6 +146,18 @@
     <footer>
         <p>&copy; 2024 Watch To Give. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Aktivieren des richtigen Menüpunkts basierend auf der aktuellen Seite
+        const links = document.querySelectorAll('.nav-link');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
 </body>
 
 </html>
