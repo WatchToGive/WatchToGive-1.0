@@ -57,6 +57,7 @@ nav ul li a.active {
 h1 {
     margin: 0;
     font-size: 2.5em;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .counter {
@@ -72,6 +73,7 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     text-align: center;
+    animation: slideIn 0.5s ease-in-out;
 }
 
 h2 {
@@ -92,13 +94,14 @@ p {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     font-size: 1.1em;
     margin-top: 20px;
 }
 
 .button:hover {
     background-color: #388e3c;
+    transform: scale(1.05);
 }
 
 footer {
@@ -134,6 +137,8 @@ footer {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .close-button {
@@ -160,5 +165,25 @@ footer {
     nav ul {
         flex-direction: column;
         gap: 10px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
