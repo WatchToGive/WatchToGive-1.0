@@ -3,7 +3,7 @@ const overlay = document.getElementById('overlay');
 const thankYouPopup = document.getElementById('thankYouPopup');
 const closeThankYouButton = document.getElementById('closeThankYouButton');
 const adCount = document.getElementById('adCount');
-const rickAstleyVideo = document.getElementById('rickAstleyVideo');
+const advertisementVideo = document.getElementById('advertisementVideo');
 
 let count = 0;
 
@@ -29,8 +29,8 @@ function increaseAdCount(increment = 1) {
 watchAdsButton.addEventListener('click', function (event) {
     event.preventDefault();
     overlay.style.display = 'block';
-    rickAstleyVideo.style.display = 'block';
-    rickAstleyVideo.play();
+    advertisementVideo.style.display = 'block';
+    advertisementVideo.play();
     increaseAdCount(1);
 });
 
@@ -38,11 +38,11 @@ watchAdsButton.addEventListener('click', function (event) {
 closeThankYouButton.addEventListener('click', function () {
     overlay.style.display = 'none';
     thankYouPopup.style.display = 'none';
-    rickAstleyVideo.style.display = 'none';
+    advertisementVideo.style.display = 'none';
 });
 
 // Video ended event
-rickAstleyVideo.addEventListener('ended', function () {
+advertisementVideo.addEventListener('ended', function () {
     overlay.style.display = 'none';
     thankYouPopup.style.display = 'block';
 });
