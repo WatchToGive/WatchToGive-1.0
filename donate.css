@@ -1,0 +1,134 @@
+/* Styles for the Donate Page */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.donate-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    margin-bottom: 15px;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="email"],
+button {
+    padding: 10px;
+    margin: 10px 0;
+    width: calc(100% - 22px);
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.button, .submit-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.button:hover, .submit-button:hover {
+    background: #0056b3;
+}
+
+.progress-container {
+    background: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    background: #007bff;
+    height: 100%;
+    width: 0;
+    transition: width 0.4s ease;
+}
+
+.benefits, .testimonials, .faq-section {
+    margin: 20px 0;
+}
+
+.faq {
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.faq-content {
+    display: none;
+    margin-top: 10px;
+}
+
+.faq.active .faq-content {
+    display: block;
+}
+
+.video-section {
+    text-align: center;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
