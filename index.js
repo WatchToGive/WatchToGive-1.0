@@ -60,19 +60,6 @@ function exitFullScreen() {
     }
 }
 
-// Eventlistener für das Klicken des Watch Ads Buttons
-watchAdsButton.addEventListener('click', function (event) {
-    event.preventDefault();
-    overlay.style.display = 'block';
-    advertisementVideo.style.display = 'block';
-    advertisementVideo.play();
-
-    // Vollbildmodus aktivieren
-    enterFullScreen(document.documentElement);
-
-    increaseAdCount(1);
-});
-
 // Funktion zum Anzeigen und automatischen Schließen des Thank You Popups
 function showThankYouPopup() {
     thankYouPopup.classList.remove('hide');
@@ -84,14 +71,37 @@ function showThankYouPopup() {
     }, 3000); // Popup bleibt 3 Sekunden sichtbar
 }
 
+// Funktion, um nach dem Video sofort den normalen Vollbildmodus aufzurufen
+function enterNormalFullScreen() {
+    setTimeout(() => {
+        enterFullScreen(document.documentElement); // "Normales" Vollbild für die gesamte Seite
+        showThankYouPopup(); // Popup sofort nach dem Vollbildmodus anzeigen
+    }, 10); // Leichte Verzögerung, um sicherzustellen, dass der Video-Vollbildmodus beendet ist
+}
+
+// Eventlistener für das Klicken des Watch Ads Buttons
+watchAdsButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    overlay.style.display = 'block';
+    advertisementVideo.style.display = 'block';
+    advertisementVideo.play();
+
+    // Vollbildmodus aktivieren für das Video
+    enterFullScreen(advertisementVideo);
+
+    increaseAdCount(1);
+});
+
 // Eventlistener für das Ende des Videos
 advertisementVideo.addEventListener('ended', function () {
     overlay.style.display = 'none';
     advertisementVideo.style.display = 'none';
-    showThankYouPopup();
-
-    // Vollbildmodus beenden
+    
+    // Zuerst den Video-Vollbildmodus verlassen
     exitFullScreen();
+
+    // Sobald der Video-Vollbildmodus verlassen wurde, "normalen" Vollbildmodus aufrufen
+    enterNormalFullScreen();
 });
 
 // Eventlistener für den Close-Button des Popups
