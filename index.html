@@ -109,73 +109,6 @@
             background-color: #388e3c;
         }
 
-        .horizontal-ad {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: red;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            color: white;
-            border: 4px solid #4CAF50;
-            max-width: 100%;
-        }
-
-        .side-ad {
-            width: 160px;
-            height: 600px;
-            background-color: red;
-            text-align: center;
-            font-weight: bold;
-            color: white;
-            line-height: 600px;
-            border: 4px solid #4CAF50;
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .side-ad {
-                display: block;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .side-ad {
-                display: none;
-            }
-        }
-
-        .ad-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-        }
-
-        .close-button {
-            cursor: pointer;
-            color: #4CAF50;
-            text-align: right;
-            font-size: 1.2em;
-        }
-
         footer {
             text-align: center;
             padding: 15px 0;
@@ -206,14 +139,6 @@
                 gap: 10px;
             }
         }
-
-        .banner-container {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 800px;
-            margin: 20px 0;
-        }
     </style>
 </head>
 
@@ -236,11 +161,6 @@
         </div>
     </header>
 
-    <div class="banner-container">
-        <div class="side-ad left">Ad 160x600</div>
-        <div class="side-ad right">Ad 160x600</div>
-    </div>
-
     <div class="container">
         <div class="content">
             <h2>How It Works</h2>
@@ -248,16 +168,6 @@
             <p>Your contribution is effortless, and the more you engage, the more impact we can make together. By participating, you are directly helping those in need, and it's all free for you!</p>
 
             <a href="#" class="button" id="watchAdsButton">Watch Ads Now</a>
-
-            <div class="horizontal-ad">
-                <p>Ad Banner 728x90</p>
-                <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
-            </div>
-
-            <div class="horizontal-ad">
-                <p>Another horizontal ad banner for charity 728x90</p>
-                <img src="https://via.placeholder.com/728x90?text=Ad+Banner+for+Charity" alt="Ad Banner" style="width: 100%; height: auto; margin-top: 10px;">
-            </div>
         </div>
     </div>
 
