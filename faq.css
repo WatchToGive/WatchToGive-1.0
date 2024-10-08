@@ -56,17 +56,19 @@ nav ul li a:hover {
     background-color: #388e3c;
 }
 
+/* Hinzufügen der Animation zur h1-Überschrift */
 h1 {
     margin: 0;
     font-size: 2.5em;
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 1s ease-in-out; /* Animation hinzugefügt */
 }
 
+/* Entfernen der Animation von der h2-Überschrift */
 h2 {
     color: #4CAF50;
     font-size: 2em;
     margin-bottom: 20px;
-    animation: slideIn 1s ease-in-out; /* Animation für die h2-Überschrift */
+    /* animation: slideIn 1s ease-in-out; */ /* Animation entfernt */
 }
 
 .container {
