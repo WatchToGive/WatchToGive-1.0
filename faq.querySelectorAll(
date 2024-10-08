@@ -1,0 +1,9 @@
+const links = document.querySelectorAll('.nav-link');
+const currentPage = window.location.pathname.split('/').pop(); // Aktueller Seitenname
+
+links.forEach(link => {
+    // Wenn der Link zur aktuellen Seite passt, die 'active'-Klasse hinzufügen
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+    }
+});
