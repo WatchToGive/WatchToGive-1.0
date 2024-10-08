@@ -9,7 +9,7 @@ body {
     color: #333;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    min-height: 100vh; /* Stellt sicher, dass der Body die volle Höhe des Viewports hat */
 }
 
 header {
@@ -70,7 +70,7 @@ h1 {
 
 .container {
     max-width: 800px;
-    margin: 20px;
+    margin: 20px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9); /* Mit Transparenz */
     border-radius: 8px;
@@ -90,17 +90,19 @@ p {
     margin-bottom: 20px;
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 15px 0;
-    background-color: #f1f1f1;
-    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Mit Transparenz */
+    margin-top: auto; /* Stellt sicher, dass der Footer immer am unteren Rand bleibt */
     border-top: 1px solid #e1e1e1;
+    width: 100%;
     position: relative;
     bottom: 0;
-    width: 100%;
 }
 
+/* Medienanpassungen für kleinere Bildschirme */
 @media (max-width: 600px) {
     h1 {
         font-size: 2em;

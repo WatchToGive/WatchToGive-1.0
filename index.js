@@ -34,6 +34,32 @@ setInterval(() => {
     increaseAdCount(randomIncrement);
 }, 1000);
 
+// Funktion zum Aktivieren des Vollbildmodus
+function enterFullScreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) { // Firefox
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) { // IE/Edge
+        element.msRequestFullscreen();
+    }
+}
+
+// Funktion zum Verlassen des Vollbildmodus
+function exitFullScreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+}
+
 // Eventlistener für das Klicken des Watch Ads Buttons
 watchAdsButton.addEventListener('click', function (event) {
     event.preventDefault();
@@ -41,15 +67,8 @@ watchAdsButton.addEventListener('click', function (event) {
     advertisementVideo.style.display = 'block';
     advertisementVideo.play();
 
-    if (advertisementVideo.requestFullscreen) {
-        advertisementVideo.requestFullscreen();
-    } else if (advertisementVideo.mozRequestFullScreen) {
-        advertisementVideo.mozRequestFullScreen();
-    } else if (advertisementVideo.webkitRequestFullscreen) {
-        advertisementVideo.webkitRequestFullscreen();
-    } else if (advertisementVideo.msRequestFullscreen) {
-        advertisementVideo.msRequestFullscreen();
-    }
+    // Vollbildmodus aktivieren
+    enterFullScreen(document.documentElement);
 
     increaseAdCount(1);
 });
@@ -68,7 +87,11 @@ function showThankYouPopup() {
 // Eventlistener für das Ende des Videos
 advertisementVideo.addEventListener('ended', function () {
     overlay.style.display = 'none';
+    advertisementVideo.style.display = 'none';
     showThankYouPopup();
+
+    // Vollbildmodus beenden
+    exitFullScreen();
 });
 
 // Eventlistener für den Close-Button des Popups
@@ -76,6 +99,28 @@ closeThankYouButton.addEventListener('click', function () {
     overlay.style.display = 'none';
     thankYouPopup.style.display = 'none';
     advertisementVideo.style.display = 'none';
+    
+    // Sicherstellen, dass der Vollbildmodus verlassen wird
+    exitFullScreen();
+});
+
+// Eventlistener für den Fullscreen-Wechsel (z.B. ESC drücken)
+document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement) {
+        overlay.style.display = 'none'; // Overlay schließen, wenn Vollbildmodus verlassen wird
+        advertisementVideo.pause(); // Video pausieren, wenn Vollbildmodus verlassen wird
+        advertisementVideo.style.display = 'none'; // Video verstecken
+    }
+});
+
+// ESC-Taste gedrückt: Vollbildmodus verlassen und Overlay schließen
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        overlay.style.display = 'none'; // Overlay schließen
+        thankYouPopup.style.display = 'none'; // Popup schließen
+        advertisementVideo.pause(); // Video pausieren
+        advertisementVideo.style.display = 'none'; // Video verstecken
+    }
 });
 
 // Lädt den Ad-Count beim Seitenaufruf
