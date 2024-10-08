@@ -21,20 +21,26 @@
                     <li><a href="about.html" class="nav-link">About Us</a></li>
                     <li><a href="faqs.html" class="nav-link">FAQs</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="donate.html" class="nav-link">Donate</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
+    
     <div class="container">
-        <div class="content">
-            <h2>How It Works</h2>
-            <p>It's simple: you watch ads, and we donate on your behalf!</p>
-            <p>Your contribution is effortless, and the more you engage, the more impact we can make together. 
-            By participating, you are directly helping those in need, and it's all free for you!</p>
+        <h2>Watch Ads and Help Us</h2>
+        <p>Every ad you watch helps us raise funds for our charity project. Thank you for your support!</p>
+        <button id="watchAdsButton" class="button">Watch Ads</button>
+    </div>
 
-            <a href="#" class="button" id="watchAdsButton">Watch Ads Now</a>
+    <div id="overlay" class="overlay">
+        <video id="advertisementVideo" width="640" height="360" controls>
+            <source src="Medien/ad-video.mp4" type="video/mp4"> <!-- Hier den Pfad zum Video anpassen -->
+            Your browser does not support the video tag.
+        </video>
+        <div id="thankYouPopup" class="thank-you-popup">
+            <span class="close-button" id="closeThankYouButton">&times;</span>
+            <h2>Thank You!</h2>
+            <p>Thanks for watching the ad. Your support means a lot!</p>
         </div>
     </div>
 
@@ -42,19 +48,7 @@
         <p>&copy; 2024 Watch To Give. All rights reserved.</p>
     </footer>
 
-    <div class="overlay" id="overlay"></div>
-    <div class="thank-you-popup" id="thankYouPopup">
-        <span class="close-button" id="closeThankYouButton">X</span>
-        <h2>Thank You!</h2>
-        <p>Thank you for watching the video and supporting our cause!</p>
-    </div>
-
-    <video id="advertisementVideo" width="600" controls style="display: none;">
-        <source src="Medien/Werbung.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <script src="script.js"></script> <!-- Verlinkung zur JavaScript-Datei -->
+    <script src="index.js"></script> <!-- Verlinkung zur JavaScript-Datei -->
 </body>
 
 </html>
