@@ -60,25 +60,6 @@ function exitFullScreen() {
     }
 }
 
-// Funktion zum Anzeigen und automatischen Schließen des Thank You Popups
-function showThankYouPopup() {
-    thankYouPopup.classList.remove('hide');
-    thankYouPopup.classList.add('show');
-    
-    setTimeout(() => {
-        thankYouPopup.classList.remove('show');
-        thankYouPopup.classList.add('hide');
-    }, 3000); // Popup bleibt 3 Sekunden sichtbar
-}
-
-// Funktion, um nach dem Video sofort den normalen Vollbildmodus aufzurufen
-function enterNormalFullScreen() {
-    setTimeout(() => {
-        enterFullScreen(document.documentElement); // "Normales" Vollbild für die gesamte Seite
-        showThankYouPopup(); // Popup sofort nach dem Vollbildmodus anzeigen
-    }, 10); // Leichte Verzögerung, um sicherzustellen, dass der Video-Vollbildmodus beendet ist
-}
-
 // Eventlistener für das Klicken des Watch Ads Buttons
 watchAdsButton.addEventListener('click', function (event) {
     event.preventDefault();
@@ -86,22 +67,36 @@ watchAdsButton.addEventListener('click', function (event) {
     advertisementVideo.style.display = 'block';
     advertisementVideo.play();
 
-    // Vollbildmodus aktivieren für das Video
+    // Vollbildmodus für das Video aktivieren
     enterFullScreen(advertisementVideo);
 
     increaseAdCount(1);
 });
 
+// Funktion zum Anzeigen des Dankeschön-Popups
+function showThankYouPopup() {
+    thankYouPopup.classList.remove('hide');
+    thankYouPopup.classList.add('show');
+
+    setTimeout(() => {
+        thankYouPopup.classList.remove('show');
+        thankYouPopup.classList.add('hide');
+    }, 3000); // Popup bleibt 3 Sekunden sichtbar
+}
+
 // Eventlistener für das Ende des Videos
 advertisementVideo.addEventListener('ended', function () {
     overlay.style.display = 'none';
     advertisementVideo.style.display = 'none';
-    
-    // Zuerst den Video-Vollbildmodus verlassen
+
+    // Vollbildmodus für das Video verlassen
     exitFullScreen();
 
-    // Sobald der Video-Vollbildmodus verlassen wurde, "normalen" Vollbildmodus aufrufen
-    enterNormalFullScreen();
+    // Sofort nach Verlassen des Videovollbilds den normalen Vollbildmodus für die Seite aktivieren
+    enterFullScreen(document.documentElement);
+
+    // Sofort das Dankeschön-Popup anzeigen
+    showThankYouPopup();
 });
 
 // Eventlistener für den Close-Button des Popups
@@ -109,18 +104,9 @@ closeThankYouButton.addEventListener('click', function () {
     overlay.style.display = 'none';
     thankYouPopup.style.display = 'none';
     advertisementVideo.style.display = 'none';
-    
-    // Sicherstellen, dass der Vollbildmodus verlassen wird
-    exitFullScreen();
-});
 
-// Eventlistener für den Fullscreen-Wechsel (z.B. ESC drücken)
-document.addEventListener('fullscreenchange', function () {
-    if (!document.fullscreenElement) {
-        overlay.style.display = 'none'; // Overlay schließen, wenn Vollbildmodus verlassen wird
-        advertisementVideo.pause(); // Video pausieren, wenn Vollbildmodus verlassen wird
-        advertisementVideo.style.display = 'none'; // Video verstecken
-    }
+    // Sicherstellen, dass der normale Vollbildmodus verlassen wird, falls aktiviert
+    exitFullScreen();
 });
 
 // ESC-Taste gedrückt: Vollbildmodus verlassen und Overlay schließen
@@ -130,6 +116,9 @@ document.addEventListener('keydown', function (e) {
         thankYouPopup.style.display = 'none'; // Popup schließen
         advertisementVideo.pause(); // Video pausieren
         advertisementVideo.style.display = 'none'; // Video verstecken
+
+        // Sicherstellen, dass der Vollbildmodus verlassen wird
+        exitFullScreen();
     }
 });
 
