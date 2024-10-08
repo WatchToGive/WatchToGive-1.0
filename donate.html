@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Now</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Charity Project - Donate Now</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="donate.html" class="active">Donate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="donate-container">
+        <h2>Your Contribution Matters</h2>
+        <p>Every donation helps us to reach those in need. Your generosity allows us to continue our mission and make a positive impact in our community and beyond.</p>
+
+        <div class="donation-amount">
+            <input type="number" id="amount" placeholder="Enter Amount" required>
+            <a href="#" class="button" id="donate-button">Donate Now</a>
+        </div>
+
+        <div class="thank-you-message" id="thank-you-message">
+            Thank you for your generous donation!
+        </div>
+
+        <div class="donor-form">
+            <input type="text" id="donor-name" placeholder="Your Name" required>
+            <input type="email" id="donor-email" placeholder="Your Email" required>
+            <button class="submit-button" id="submit-donation">Submit</button>
+        </div>
+
+        <div class="donation-details">
+            <h3>Donation Details</h3>
+            <p><strong>Amount:</strong> $<span id="donation-amount">0.00</span></p>
+            <p><strong>Name:</strong> <span id="donor-name-display">Anonymous</span></p>
+            <p><strong>Email:</strong> <span id="donor-email-display">Not Provided</span></p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="benefits">
+            <h3>Why Donate?</h3>
+            <ul class="benefit-list">
+                <li>Your donation goes directly to those in need.</li>
+                <li>We provide full transparency on how your money is used.</li>
+                <li>Even a small contribution can make a big difference.</li>
+            </ul>
+        </div>
+
+        <div class="testimonials">
+            <h3>What People Are Saying</h3>
+            <div class="testimonial">
+                "This charity has changed so many lives, and I'm proud to support them!" - John Doe
+            </div>
+            <div class="testimonial">
+                "I love knowing that my donations are making a real impact." - Jane Smith
+            </div>
+        </div>
+
+        <div class="video-section">
+            <h3>See How Your Donation Helps</h3>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        </div>
+
+        <div class="newsletter">
+            <h3>Subscribe to Our Newsletter</h3>
+            <input type="email" id="newsletter-email" placeholder="Your Email">
+            <button id="subscribe-button">Subscribe</button>
+        </div>
+
+        <div class="faq-section">
+            <h3>Frequently Asked Questions</h3>
+            <div class="faq">
+                <h4>How do I know my donation is secure?</h4>
+                <div class="faq-content">
+                    We use trusted payment processors to ensure all transactions are safe and secure.
+                </div>
+            </div>
+            <div class="faq">
+                <h4>Where does my money go?</h4>
+                <div class="faq-content">
+                    100% of your donation goes towards providing aid to those in need. We provide regular updates on how funds are used.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad left">Ad Banner</div>
+    <div class="side-ad right">Ad Banner</div>
+
+    <footer>
+        <p>&copy; 2024 Charity Project. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('donate-button').onclick = function () {
+            const amount = document.getElementById('amount').value;
+            if (amount && amount > 0) {
+                document.getElementById('donation-amount').innerText = parseFloat(amount).toFixed(2);
+                document.getElementById('thank-you-message').style.display = 'block';
+
+                // Progress bar update
+                const targetAmount = 5000; // Example target amount
+                const progressBar = document.getElementById('progress-bar');
+                const progressPercentage = (amount / targetAmount) * 100;
+                progressBar.style.width = progressPercentage + '%';
+            } else {
+                alert('Please enter a valid donation amount.');
+            }
+        };
+
+        document.getElementById('submit-donation').onclick = function () {
+            const name = document.getElementById('donor-name').value || 'Anonymous';
+            const email = document.getElementById('donor-email').value || 'Not Provided';
+            document.getElementById('donor-name-display').innerText = name;
+            document.getElementById('donor-email-display').innerText = email;
+            alert('Donation Submitted!');
+        };
+
+        const faqs = document.querySelectorAll('.faq');
+        faqs.forEach(faq => {
+            faq.addEventListener('click', function () {
+                this.classList.toggle('active');
+            });
+        });
+
+        document.getElementById('subscribe-button').onclick = function () {
+            const newsletterEmail = document.getElementById('newsletter-email').value;
+            if (newsletterEmail) {
+                alert('Thank you for subscribing, ' + newsletterEmail + '!');
+                document.getElementById('newsletter-email').value = '';
+            } else {
+                alert('Please enter your email to subscribe.');
+            }
+        };
+    </script>
+</body>
+
+</html>
