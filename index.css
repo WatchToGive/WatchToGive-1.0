@@ -1,3 +1,4 @@
+/* Globale Einstellungen */
 * {
     box-sizing: border-box; /* Box-Sizing für konsistente Layouts */
 }
@@ -16,6 +17,7 @@ body {
     min-height: 100vh; /* Stellt sicher, dass der Body die volle Höhe des Viewports hat */
 }
 
+/* Header-Stile */
 header {
     background-color: rgba(76, 175, 80, 0.8); /* Hintergrundfarbe mit Transparenz */
     color: white;
@@ -61,6 +63,7 @@ nav ul li a.active {
     font-weight: bold;
 }
 
+/* Hauptüberschrift und Counter */
 h1 {
     margin: 0;
     font-size: 2.5em;
@@ -72,6 +75,7 @@ h1 {
     margin-top: 10px;
 }
 
+/* Container für den Inhalt */
 .container {
     max-width: 600px; /* Maximalbreite des Containers */
     margin: 20px auto; /* Zentriert die Box auf der Seite */
@@ -95,6 +99,7 @@ p {
     margin-bottom: 20px;
 }
 
+/* Button-Stil */
 .button {
     display: inline-block;
     padding: 12px 25px;
@@ -112,6 +117,7 @@ p {
     transform: scale(1.05);
 }
 
+/* Footer-Stil */
 footer {
     text-align: center;
     padding: 15px 0;
@@ -123,6 +129,7 @@ footer {
     width: 100%;
 }
 
+/* Overlay und Popup-Stile */
 .overlay {
     display: none;
     position: fixed;
@@ -156,6 +163,7 @@ footer {
     font-size: 1.2em;
 }
 
+/* Responsive Anpassungen */
 @media (max-width: 600px) {
     h1 {
         font-size: 2em;
@@ -174,6 +182,38 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+/* Animationsstile für das Popup */
+@keyframes popupOpen {
+    0% {
+        transform: scale(0.5) translate(-50%, -50%);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+@keyframes popupClose {
+    0% {
+        transform: scale(1) translate(-50%, -50%);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+.thank-you-popup.show {
+    display: block;
+    animation: popupOpen 0.5s ease forwards;
+}
+
+.thank-you-popup.hide {
+    animation: popupClose 0.5s ease forwards;
 }
 
 @keyframes fadeIn {
